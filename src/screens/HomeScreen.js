@@ -1,21 +1,44 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import ComponentsScreen from "./ComponentsScreen";
+import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
 
-const HomeScreen = () => {
-  const name = "Nicholas";
-  return (
-    <View>
-      <Text style={styles.text}>Home Screen</Text>
-      <Text style={{ fontSize: 20 }}>Hello, my name is {name}</Text>
-      <ComponentsScreen />
-    </View>
-  );
+// onListPressed = () => {
+//   console.log("List pressed");
+//   //this.props.navigation.navigate("List");
+// };
+
+onComponentPressed = () => {
+  console.log("Component pressed");
+  // this.props.actions.navigate("Component");
 };
 
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View>
+        <Text style={styles.header}>Home</Text>
+        <Button
+          title="Go to List"
+          onPress={() => {
+            this.props.navigation.navigate("List");
+          }}
+        />
+        <TouchableOpacity
+          onPress={() => {
+            this.props.navigation.navigate("Components");
+          }}
+        >
+          <Text>Components</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 30
+  header: {
+    fontSize: 30,
+    marginBottom: 20,
+    textAlign: "center"
   }
 });
 

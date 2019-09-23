@@ -34,6 +34,12 @@ class HomeScreen extends React.Component {
             this.props.navigation.navigate("Count");
           }}
         />
+        <Button
+          title="Colours"
+          onPress={() => {
+            this.props.navigation.navigate("Colours");
+          }}
+        />
         <TouchableOpacity
           onPress={() => {
             this.props.navigation.navigate("Components");

@@ -6,30 +6,39 @@ generateColour = () => {
   return Math.ceil(Math.random() * Math.ceil(255));
 };
 
-function moreColour(colour) {
-  return colour + 10;
-}
-
-function lessColour(colour) {
-  return colour - 10;
-}
-
-function onPressHandler(colour) {
-  console.log(`On Press Handler for:`);
-  console.log(colour);
+function setColour(colour, value) {
+  const update = colour;
+  return update + value;
 }
 
 const ColourSquare = () => {
-  const [colour, setColour] = useState([]); // 0, 0, 0
+  const [red, setRed] = useState(0); // 0, 0, 0
+  const [blue, setBlue] = useState(0); // 0, 0, 0
+  const [green, setGreen] = useState(0); // 0, 0, 0
+
   return (
     <View>
       <Text>Colour Square.</Text>
 
-      <ColourControl colour="red" onPress={onPressHandler}></ColourControl>
-      <ColourControl colour="blue" onPress={onPressHandler}></ColourControl>
-      <ColourControl colour="green" onPress={onPressHandler}></ColourControl>
+      <ColourControl
+        colour="Red"
+        onIncrease={() => setRed(red + 10)}
+        onDecrease={() => setRed(red - 10)}
+      ></ColourControl>
+      <ColourControl
+        colour="Blue"
+        onIncrease={() => setBlue(blue + 10)}
+        onDecrease={() => setBlue(blue - 10)}
+      ></ColourControl>
+      <ColourControl
+        colour="Green"
+        onIncrease={() => setGreen(green + 10)}
+        onDecrease={() => setGreen(green - 10)}
+      ></ColourControl>
 
-      <View style={{ backgroundColour: "red", height: 100, width: 100 }}></View>
+      <View
+        style={{ backgroundColor: `rgb(${red}, ${green}, ${blue})`, height: 100, width: 100 }}
+      ></View>
     </View>
   );
 };
